@@ -1,0 +1,9 @@
+environments:
+  - acceptance
+resources:
+  - service:
+      provider: fargate
+      container: tutum/hello-world:latest
+  - network:
+      vpc:
+        maxAZs: {{ 1 if environment == "acceptance" else 3 }}
